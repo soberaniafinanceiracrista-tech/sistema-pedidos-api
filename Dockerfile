@@ -1,5 +1,5 @@
 # Estágio 1: Build
-FROM maven:3.8.5-openjdk-17 AS build
+FROM FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
 # Copia o pom.xml e baixa as dependências (cache do Docker)
 COPY pom.xml .
