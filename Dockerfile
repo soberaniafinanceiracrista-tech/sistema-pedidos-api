@@ -10,7 +10,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Estágio 2: Runtime
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 # Copia apenas o jar gerado no estágio anterior
 COPY --from=build /app/target/*.jar app.jar
