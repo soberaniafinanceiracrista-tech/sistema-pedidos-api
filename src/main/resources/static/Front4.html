@@ -357,7 +357,7 @@
 
                 <div class="form-group">
                     <label for="url">URL da API:</label>
-                    <input type="url" id="url" placeholder="http://localhost:8080/auth/logar" value="http://localhost:8080/auth/logar">
+                    <input type="url" id="url" placeholder='${BASE_URL}/auth/logar' value="http://" + ${BASE_URL} + "/auth/logar">
                 </div>
 
                 <div class="form-group" id="id-input-group" style="display: none;">
@@ -448,7 +448,7 @@
     </div>
 
     <script>
-        const BASE_URL = 'http://localhost:8080';
+        const BASE_URL = 'window.location.origin';
         let requestHistory = JSON.parse(localStorage.getItem('apiHistoryAgricola')) || [];
         let currentEntity = 'auth';
         let currentToken = localStorage.getItem('jwtToken') || null;
@@ -718,13 +718,13 @@
         statusElement.textContent = `❌ Erro: ${error.message}`;
         statusElement.className = 'status-indicator status-error';
         responseElement.textContent = `Possíveis causas:
-        1. API não está rodando em localhost:8080
+        1. API não está rodando em '${BASE_URL}'
         2. Problema de CORS (verifique o console do navegador)
         3. Erro de rede
 
         Verifique se:
         - Sua API Spring está rodando
-        - A porta 8080 está livre
+        - A porta da aplicação está livre
         - Não há erros no console do navegador (F12)
 
         Detalhes do erro: ${error.toString()}`;
