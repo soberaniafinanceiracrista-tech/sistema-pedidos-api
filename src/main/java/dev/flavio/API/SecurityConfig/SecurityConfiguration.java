@@ -40,6 +40,8 @@ public class SecurityConfiguration {
                     .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
                      // ✅ Endpoint do swagger - documentação
                      .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/webjars/**").permitAll()
+                    // ✅ Páginas HTML estáticas (FrontV1 até FrontV5)
+                     .requestMatchers(HttpMethod.GET, "/*.html", "/favicon.ico").permitAll()
                     // ✅ Endpoints públicos (autenticação)
                     .requestMatchers(HttpMethod.POST, "/auth/logar").permitAll()
                     .requestMatchers(HttpMethod.POST, "/auth/registrar").permitAll()
